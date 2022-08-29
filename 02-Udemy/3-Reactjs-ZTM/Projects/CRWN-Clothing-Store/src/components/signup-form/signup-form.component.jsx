@@ -1,5 +1,8 @@
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
-import {useState} from 'react'
+import { useState } from 'react'
+import {
+    createAuthUserWithEmailAndPassword,
+    createUserDocumentFromAuth 
+} from '../../utils/firebase/firebase.utils'
 
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
@@ -20,8 +23,6 @@ const SignUpForm = () => {
     const [formFields, setFormFields ] = useState(defaultFormFields)
     const { displayName, email, password, confirmPassword } = formFields
 
-    console.log(formFields)
-
     const resetFormField = () => {
         setFormFields(defaultFormFields)
     }
@@ -35,10 +36,14 @@ const SignUpForm = () => {
         }
 
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(email, password)
+            const { user } = await createAuthUserWithEmailAndPassword(
+                email,
+                password
+            )
 
-            await createUserDocumentFromAuth(user, { displayName })
             resetFormField()
+            await createUserDocumentFromAuth(user, { displayName })
+
         } catch(error) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Can\'t create a user, email already exists!')
@@ -50,7 +55,6 @@ const SignUpForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-
         setFormFields({...formFields, [name]: value})
     }
     
