@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { 
     signInWithGooglePopup,
     createUserDocumentFromAuth,
@@ -8,7 +8,7 @@ import {
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
 
-import './sign-in-form.styles.scss'
+import { ButtonsContainer, SignUpContainer, SignUpHeader } from './sign-in-form.styles.jsx'
 
 
 
@@ -60,8 +60,8 @@ const SignInForm = () => {
     }
     
     return (
-        <div className="sign-up-container">
-            <h2>Already have an account?</h2>
+        <SignUpContainer>
+            <SignUpHeader>Already have an account?</SignUpHeader>
             <span>Sign In with your email and password</span>
             <form onSubmit={ handleSubmit }>
                 <FormInput 
@@ -82,13 +82,13 @@ const SignInForm = () => {
                     value={ password }
                 />
 
-                <div className="buttons-container">
+                <ButtonsContainer>
                     <Button type="submit">Sign In</Button>
                     <Button type="button" buttonType="google" onClick={signInWithGoogle}>Google sign in</Button>
-                </div>
+                </ButtonsContainer>
                 
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 
