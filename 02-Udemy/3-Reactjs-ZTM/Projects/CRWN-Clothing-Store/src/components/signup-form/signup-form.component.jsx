@@ -5,7 +5,7 @@ import {
 } from '../../utils/firebase/firebase.utils'
 
 import FormInput from '../form-input/form-input.component'
-import Button from '../button/button.component'
+import Button, { BUTTON_TYPES_CLASSES } from '../button/button.component'
 
 import { SignUpContainer, SignUpHeader } from './sign-up-form.styles.jsx'
 
@@ -99,7 +99,12 @@ const SignUpForm = () => {
                     value={ confirmPassword }
                 />
 
-                <Button type="submit">Sign Up</Button>
+                <Button 
+                    buttonType={BUTTON_TYPES_CLASSES.base}
+                    type="submit"
+                    >
+                        Sign Up
+                    </Button>
             </form>
         </SignUpContainer>
     )
