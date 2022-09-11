@@ -22,7 +22,7 @@ const Navigation = () => {
 
       <NavigationContainer>
       
-          <LogoContainer to='/home'>
+          <LogoContainer to='/'>
             <CrownLogo className='logo' />
           </LogoContainer>
           <NavLinks>
